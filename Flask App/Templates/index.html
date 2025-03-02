@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Sentimen Kompetensi Gen Z</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E0F7FA; /* Warna cyan muda */
+            color: #004D40; /* Warna teks hijau gelap */
+            text-align: center;
+            padding-top: 50px;
+        }
+        .container {
+            background-color: #B2EBF2; /* Warna cyan lebih terang */
+            border-radius: 15px;
+            padding: 20px;
+            width: 60%;
+            max-width: 800px;
+            display: inline-block;
+            border: 2px solid #0097A7; /* Warna cyan medium */
+        }
+        textarea {
+            height: 150px;
+            width: 100%;
+            font-size: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #0097A7; /* Warna cyan medium */
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            background-color: #FFFFFF; /* Putih */
+            color: #004D40; /* Hijau gelap */
+        }
+        button {
+            background-color: #0097A7; /* Warna cyan medium */
+            color: #FFFFFF; /* Putih */
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004D40; /* Warna cyan lebih gelap saat hover */
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        table, th, td {
+            border: 1px solid #004D40;
+        }
+        th {
+            background-color: #0097A7;
+            color: #FFFFFF;
+            padding: 12px;
+            font-size: 16px;
+        }
+        td {
+            background-color: #E0F7FA;
+            color: #004D40;
+            padding: 12px;
+            font-size: 16px;
+        }
+    </style>
+      
+    
+</head>
+<body>
+    <h1>Analisis Sentimen Kompetensi Gen Z</h1>
+    <div class="container">
+        <form action="/predict" method="POST">
+            <textarea name="text" placeholder="Masukkan teks untuk dianalisis..."></textarea>
+            <br>
+            <button type="submit"><b>Analisis</b></button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            <table>
+                <tr>
+                    <th>Teks</th>
+                    <th>Prediksi Sentimen</th>
+                    <th>Kategori User</th>
+                    <th>Kategori Topik</th>
+                </tr>
+                <tr>
+                    <td>{{ user_text }}</td>
+                    <td>{{ prediction_text }}</td>
+                    <td>{{ user_category }}</td>
+                    <td>{{ topic_category }}</td>
+                </tr>
+            </table>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
